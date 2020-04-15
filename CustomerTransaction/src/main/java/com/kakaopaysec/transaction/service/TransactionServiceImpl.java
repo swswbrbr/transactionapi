@@ -8,9 +8,15 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.kakaopaysec.transaction.entity.Account;
+import com.kakaopaysec.transaction.info.BranchInfo;
+import com.kakaopaysec.transaction.info.BranchParam;
+import com.kakaopaysec.transaction.info.BranchSumAmountResult;
+import com.kakaopaysec.transaction.info.KakaoErrorCode;
 import com.kakaopaysec.transaction.info.MaxAmountDTO;
 import com.kakaopaysec.transaction.info.MaxResult;
 import com.kakaopaysec.transaction.info.NoTransactionResult;
@@ -36,7 +42,6 @@ public class TransactionServiceImpl implements TransactionService {
 		for(int i = 2018; i < 2020; i++) {
 			final int j = i;
 			Map<String, Long> amtMap = new HashMap<String, Long>();
-			
 			
 			sumAmtList.parallelStream()
 					.filter(t -> t.getTrDate().startsWith(String.valueOf(j)))
@@ -80,6 +85,36 @@ public class TransactionServiceImpl implements TransactionService {
 		}
 		
 		return resultList;
+	}
+
+	@Override
+	public List<BranchSumAmountResult> findSumAmountOfEachBranchByYear() {
+		List<BranchSumAmountResult> resultList = new ArrayList<BranchSumAmountResult>();
+		
+		for(int i = 2018; i < 2021; i++) {
+			List<BranchInfo> dataList = transactionRepository.findSumAmountOfEachBranchByYear(String.valueOf(i));
+			
+			BranchSumAmountResult result = new BranchSumAmountResult();
+			result.setYear(i);
+			result.setDataList(dataList);
+			resultList.add(result);
+			
+		}
+		
+		return resultList;
+	}
+
+	@Override
+	public ResponseEntity<?> findSumAmountOfBranchByName(BranchParam brParam) {
+		BranchInfo branch = transactionRepository.findSumAmountOfBranchByName(brParam.getBrName());
+		
+		if("분당점".equals(brParam.getBrName())) {
+			return new ResponseEntity<>(new KakaoErrorCode("404", "br code not found error"), HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(branch, HttpStatus.OK);
+		}
+		
+	
 	}
 	
 }

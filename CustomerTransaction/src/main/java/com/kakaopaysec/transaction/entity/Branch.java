@@ -11,21 +11,12 @@ public class Branch {
 	
 	public Branch() {}
 	
-//	@Id
-//	@GeneratedValue
-//	@Column(name = "BRANCH_ID")
-//	private long id;
-	
 	@Id
 	@Column(name = "BRANCH_CODE")
 	private char brCode;
 	
 	@Column(name = "BRANCH_NAME")
 	private String brName;
-
-//	public long getId() {
-//		return id;
-//	}
 
 	public char getBrCode() {
 		return brCode;
