@@ -21,7 +21,7 @@ public class QAccount extends EntityPathBase<Account> {
 
     public final StringPath accountNm = createString("accountNm");
 
-    public final NumberPath<Long> accountNo = createNumber("accountNo", Long.class);
+    public final StringPath accountNo = createString("accountNo");
 
     public final ComparablePath<Character> brCode = createComparable("brCode", Character.class);
 

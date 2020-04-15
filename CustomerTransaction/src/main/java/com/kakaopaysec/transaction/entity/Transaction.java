@@ -19,7 +19,7 @@ public class Transaction {
 	@Id
 	@Column(name = "ACCOUNT_NO")
 	@JoinColumn(name = "ACCOUNT_NO")
-	private long accountNo;
+	private String accountNo;
 	
 	@Id
 	@Column(name = "TRANSACTION_NO")
@@ -34,11 +34,11 @@ public class Transaction {
 	@Column(name = "CANCLE_YN")
 	private char cancleYn;
 
-	public long getAccountNo() {
+	public String getAccountNo() {
 		return accountNo;
 	}
 
-	public void setAccountNo(long accountNo) {
+	public void setAccountNo(String accountNo) {
 		this.accountNo = accountNo;
 	}
 
@@ -81,13 +81,5 @@ public class Transaction {
 	public void setTrDate(String trDate) {
 		this.trDate = trDate;
 	}
-	
-	
-
-//	public long getId() {
-//		return id;
-//	}
-
-
 	
 }

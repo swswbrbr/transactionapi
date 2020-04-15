@@ -22,3 +22,9 @@ spring:
          dialect: org.hibernate.dialect.H2Dialect
          ddl-auto: create-drop
       generate-ddl: true
+
+   http:
+      encoding:
+         charset: UTF-8
+         enabled: true
+         force: true

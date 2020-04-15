@@ -12,7 +12,7 @@ public class Account {
 	
 	@Id
 	@Column(name = "ACCOUNT_NO")
-	private long accountNo;
+	private String accountNo;
 	
 	@Column(name = "ACCOUNT_NAME")
 	private String accountNm;
@@ -21,10 +21,10 @@ public class Account {
 	@JoinColumn(name = "BRANCH_CODE")
 	private char brCode;
 	
-	public long getAccountNo() {
+	public String getAccountNo() {
 		return accountNo;
 	}
-	public void setAccountNo(long accountNo) {
+	public void setAccountNo(String accountNo) {
 		this.accountNo = accountNo;
 	}
 	public String getAccountNm() {

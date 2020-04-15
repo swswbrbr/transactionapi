@@ -19,7 +19,7 @@ public class QTransaction extends EntityPathBase<Transaction> {
 
     public static final QTransaction transaction = new QTransaction("transaction");
 
-    public final NumberPath<Long> accountNo = createNumber("accountNo", Long.class);
+    public final StringPath accountNo = createString("accountNo");
 
     public final ComparablePath<Character> cancleYn = createComparable("cancleYn", Character.class);
 
