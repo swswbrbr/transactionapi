@@ -21,7 +21,7 @@ import com.querydsl.core.Tuple;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestDatabase
 public class RepositoryTests {
-	
+	 
 	@Autowired
 	private TransactionRepositoryImpl transactionRepository;
 	
@@ -42,6 +42,17 @@ public class RepositoryTests {
 	@Test
 	public void findAccListWithYearTest() {
 		List<String> accList = transactionRepository.findAccListWithYear("2018");
+		
+		assertThat(accList.get(0))
+					.isNotNull()
+					.isNotEmpty()
+					.isExactlyInstanceOf(String.class);
+		
+	}
+	
+	@Test
+	public void findAccListWithYearTesForAnotherYear() {
+		List<String> accList = transactionRepository.findAccListWithYear("2019");
 		
 		assertThat(accList.get(0))
 					.isNotNull()

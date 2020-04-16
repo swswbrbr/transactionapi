@@ -24,7 +24,7 @@ import com.kakaopaysec.transaction.service.TransactionService;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 public class ControllerTests {
-
+ 
 	@Autowired 
 	private TransactionService transactionService;
 	
@@ -71,6 +71,16 @@ public class ControllerTests {
 			.isEqualByComparingTo(HttpStatus.NOT_FOUND);
 	}
 	
-	
+	@Test
+	public void getSumAmountOfBranchByNameTestForAnotherBranch() {
+		BranchParam brParam = new BranchParam();
+		brParam.setBrName("강남점");
+		
+		ResponseEntity<?> responseEntity = transactionService.findSumAmountOfBranchByName(brParam);
+
+		assertThat(responseEntity.getStatusCode())
+			.isInstanceOf(HttpStatus.class)
+			.isEqualByComparingTo(HttpStatus.OK);
+	}
 	
 }
