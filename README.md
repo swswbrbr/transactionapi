@@ -48,8 +48,10 @@
     - JSON 형식의 파라미터 필요: {"brName":"관리점명"}
 
 ## 빌드 및 실행방법
-  - https://github.com/swswbrbr/transactionapi 에서 Repository를 Clone
-  - (이클립스 사용)import - Projects from Git에서 복사한 URI를 입력
+  - https://github.com/swswbrbr/transactionapi - Repository의 URI를 Clone
+  - (이클립스 사용)import - Projects from Git - 복사한 URI를 입력
   - Gradle 빌드 실행
   - Application.java 파일 실행
+  - H2 데이터베이스 콘솔 접속: 브라우저에서 http://localhost/h2 주소 입력 -> connect 클릭
+  - In-memory DB 특성: 어플리케이션을 실행할 때마다 테이블 생성 및 데이터 입력되도록 처리
   
