@@ -43,7 +43,7 @@ public class TransactionServiceImpl implements TransactionService {
 			final int j = i;
 			Map<String, Long> amtMap = new HashMap<String, Long>();
 			
-			sumAmtList.parallelStream()
+			sumAmtList.stream()
 					.filter(t -> t.getTrDate().startsWith(String.valueOf(j)))
 					.collect(Collectors.groupingBy(MaxAmountDTO::getAccountNo))
 					.entrySet().stream()
